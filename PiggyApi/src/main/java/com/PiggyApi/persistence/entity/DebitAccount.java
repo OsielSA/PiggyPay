@@ -1,6 +1,8 @@
 package com.PiggyApi.persistence.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -32,26 +34,17 @@ public class DebitAccount {
     @Column(name = "current_balance")
     private float currentBalance;
 
-    @Column(name = "last_update_balance")
+    @Column(name = "last_update_balance", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @CreationTimestamp
     private Timestamp lastUpdateBalance;
 
-    @ManyToOne
-    @JoinColumn(name = "id_user", insertable = false, updatable = false)
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "id_user", insertable = false, updatable = false)
+//    private User user;
+//
+//    @OneToMany(mappedBy = "debitAccount")
+//    private List<DebitMovement> debitMovements;
 
-    @OneToMany(mappedBy = "debitAccount")
-    private List<DebitMovement> debitMovements;
-
-    public DebitAccount(int idAccount, int idUser, String cardholderName, String issuingBank, String cardNumber, boolean allowsSections, float currentBalance, Timestamp lastUpdateBalance) {
-        this.idAccount = idAccount;
-        this.idUser = idUser;
-        this.cardholderName = cardholderName;
-        this.issuingBank = issuingBank;
-        this.cardNumber = cardNumber;
-        this.allowsSections = allowsSections;
-        this.currentBalance = currentBalance;
-        this.lastUpdateBalance = lastUpdateBalance;
-    }
 
     public int getIdAccount() {
         return idAccount;
@@ -116,4 +109,12 @@ public class DebitAccount {
     public void setLastUpdateBalance(Timestamp lastUpdateBalance) {
         this.lastUpdateBalance = lastUpdateBalance;
     }
+
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 }

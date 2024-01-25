@@ -27,9 +27,9 @@ public class DebitMovement {
     @Column(name = "date_movement")
     private Timestamp dateMovement;
 
-    @OneToMany
-    @JoinColumn(name = "id_account", insertable = false, updatable = false)
-    private DebitAccount debitAccount;
+//    @OneToMany
+//    @JoinColumn(name = "id_account", insertable = false, updatable = false)
+//    private DebitAccount debitAccount;
 
 
     public int getIdMovement() {
