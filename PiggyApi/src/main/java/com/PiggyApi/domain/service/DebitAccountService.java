@@ -18,7 +18,7 @@ public class DebitAccountService {
         return debitAccountRepository.getAll();
     }
 
-    public Optional<DebitAccount> getAccountByIdAccount(int idAccount){
+    public List<DebitAccount> getAccountByIdAccount(int idAccount){
         return debitAccountRepository.getByIdAccount(idAccount);
     }
     public List<DebitAccount> getAccountsByIdUser(int idUser){
@@ -28,5 +28,11 @@ public class DebitAccountService {
     public DebitAccount saveAccount(DebitAccount debitAccount){
         return debitAccountRepository.saveAccount(debitAccount);
     }
-
+    public boolean deleteDebitAccount(int idAccount){
+        debitAccountRepository.deleteDebitAccount(idAccount);
+        List<DebitAccount> account = getAccountByIdAccount(idAccount);
+        if(account.isEmpty())
+            return true;
+        return false;
+    }
 }

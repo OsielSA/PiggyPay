@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface DebitAccountCrudRepository extends CrudRepository<DebitAccount, Integer> {
 
 
-    Optional<DebitAccount> findByIdAccount(int idAccount);
+    List<DebitAccount> findByIdAccount(int idAccount);
 
     List<DebitAccount> findByIdUser(int idUser);
 }

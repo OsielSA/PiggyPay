@@ -35,7 +35,7 @@ public class DebitAccount {
     private float currentBalance;
 
     @Column(name = "last_update_balance", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    @CreationTimestamp
+    @UpdateTimestamp
     private Timestamp lastUpdateBalance;
 
 //    @ManyToOne

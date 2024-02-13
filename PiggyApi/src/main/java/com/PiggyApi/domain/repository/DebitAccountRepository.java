@@ -18,7 +18,7 @@ public class DebitAccountRepository {
         return (List<DebitAccount>) debitAccountCrudRepository.findAll();
     }
 
-    public Optional<DebitAccount> getByIdAccount(int idAccount){
+    public List<DebitAccount> getByIdAccount(int idAccount){
         return debitAccountCrudRepository.findByIdAccount(idAccount);
     }
     public List<DebitAccount> getByIdUser(int idUser){
@@ -27,4 +27,9 @@ public class DebitAccountRepository {
     public DebitAccount saveAccount(DebitAccount debitAccount){
         return debitAccountCrudRepository.save(debitAccount);
     }
+
+    public void deleteDebitAccount(int idAccount){
+        debitAccountCrudRepository.deleteById(idAccount);
+    }
+
 }
