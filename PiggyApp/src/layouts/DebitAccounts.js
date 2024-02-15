@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import { Button, Modal, Form } from 'react-bootstrap'
 import { API_URLS } from '../apiConfig';
 import axios from 'axios';
 
+import { useDispatch } from 'react-redux';
+import { addAccount } from '../redux/DebitAccountSlice';
 
 function formatearCadena(cadena) {
     if (cadena.length !== 16) {
@@ -155,6 +158,11 @@ const DebitAccounts = () => {
         getAccounts();
     };
 
+    const dispatch = useDispatch();
+
+    const addAccountState = (account) => {
+        dispatch(addAccount(account))
+    }
 
     return (
         <div className='App'>
@@ -185,7 +193,12 @@ const DebitAccounts = () => {
                                     {accounts.map( (account, i) => (
                                         <tr key={account.idAccount}>
                                             <td>{(i+1)}</td>
-                                            <td>{account.issuingBank}</td>
+                                            <td>
+                                                <Link to={{pathname:"/debit_accounts/detail" }} 
+                                                      onClick={() => addAccountState(account)}>
+                                                    {account.issuingBank}
+                                                </Link>
+                                            </td>
                                             <td>{account.cardholderName}</td>
                                             <td>
                                                 <a onClick={() => 
