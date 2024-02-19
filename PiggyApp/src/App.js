@@ -1,8 +1,9 @@
 import  { BrowserRouter, Routes, Route } from 'react-router-dom'
-import NavigationBar from './layouts/NavBar';
-import PiggyHome from './layouts/PiggyHome';
-import DebitAccounts from './layouts/DebitAccounts';
-import DetailDebitAccount from './layouts/DetailDebitAccount';
+import NavigationBar from './pages/NavBar';
+import PiggyHome from './pages/PiggyHome';
+import DebitAccounts from './pages/DebitAccounts';
+import DetailDebitAccount from './pages/DetailDebitAccount';
+import ModalFormDebitAccount from './components/ModalFormDebitAccount';
 
 import './App.css';
 
@@ -14,6 +15,7 @@ function App() {
           <Route path='home' element={ <PiggyHome /> } />
           <Route path='debit_accounts' element={ <DebitAccounts /> } />
           <Route path='debit_accounts/detail' element={ <DetailDebitAccount /> } />
+          <Route path='debit_accounts/form' element={ <ModalFormDebitAccount /> } />
         </Route>
       </Routes>
     </BrowserRouter>

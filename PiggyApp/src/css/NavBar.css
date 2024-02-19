@@ -1,6 +1,5 @@
 .navigationBar{
     background-color: #37368B;
-    
 }
 .NavButton{
     color: #F3F3F3 !important;
@@ -8,6 +7,16 @@
 .navTitle{
     font-weight: bold;
     font-size: 28px;
-    color: #F3F3F3 !important;   
+    color: #F3F3F3 !important;
 }
-  
+.backBar{
+    background-color: #4b4a96;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+.backText{
+    color: #F3F3F3;
+    font-weight: bold;
+    margin-left: 5px;
+}

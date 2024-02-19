@@ -22,9 +22,17 @@ export const debitAccountSlice = createSlice({
       state.cardNumber = cardNumber;
       state.currentBalance = currentBalance;
       state.allowsSections = allowsSections;    
+    },
+    removeAccount: (state, action) => {
+      state.idAccount = '';
+      state.issuingBank = '';
+      state.cardholderName = '';
+      state.cardNumber = '';
+      state.currentBalance = '';
+      state.allowsSections = '';
     }
   }
 });
 
-export const { addAccount } = debitAccountSlice.actions;
+export const { addAccount, removeAccount } = debitAccountSlice.actions;
 export default debitAccountSlice.reducer;
