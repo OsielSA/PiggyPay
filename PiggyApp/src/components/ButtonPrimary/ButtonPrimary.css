@@ -1,0 +1,27 @@
+.btn-primary-color {
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #37368B;
+    border-color: #37368B;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+  }
+.btn-primary-color:hover {
+    background-color: #37368B;
+    border-color: #37368B;
+}
+
+.btn-primary-color:focus {
+    box-shadow: 0 0 0 0.2rem #3B39AD;
+}
+
+.btn-primary-color:active {
+    background-color: #37368B;
+    border-color: #37368B;
+}
+
+.btn-primary-color.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}

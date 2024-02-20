@@ -1,0 +1,27 @@
+.btn-danger-color {
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #A02323;
+    border-color: #A02323;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+  }
+.btn-danger-color:hover {
+    background-color: #A02323;
+    border-color: #A02323;
+}
+
+.btn-danger-color:focus {
+    box-shadow: 0 0 0 0.2rem #3B39AD;
+}
+
+.btn-danger-color:active {
+    background-color: #A02323;
+    border-color: #A02323;
+}
+
+.btn-danger-color.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}

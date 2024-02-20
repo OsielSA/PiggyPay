@@ -3,7 +3,7 @@ import NavigationBar from './pages/NavBar';
 import PiggyHome from './pages/PiggyHome';
 import DebitAccounts from './pages/DebitAccounts';
 import DetailDebitAccount from './pages/DetailDebitAccount';
-import ModalFormDebitAccount from './components/ModalFormDebitAccount';
+import FormDebitAccount from './components/FormDebitAccount';
 
 import './App.css';
 
@@ -15,7 +15,7 @@ function App() {
           <Route path='home' element={ <PiggyHome /> } />
           <Route path='debit_accounts' element={ <DebitAccounts /> } />
           <Route path='debit_accounts/detail' element={ <DetailDebitAccount /> } />
-          <Route path='debit_accounts/form' element={ <ModalFormDebitAccount /> } />
+          <Route path='debit_accounts/form' element={ <FormDebitAccount /> } />
         </Route>
       </Routes>
     </BrowserRouter>
