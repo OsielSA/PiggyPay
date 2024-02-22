@@ -2,11 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { API_URLS } from '../apiConfig';
 import axios from 'axios';
-
+import { Card, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { addAccount, removeAccount } from '../redux/DebitAccountSlice';
+import PiggyButton from '../components/PiggyButton/PiggyButton';
+import CardDesign from '../components/CardDesing/CardDesign';
+import { dataOffline } from '../OfflineData.js'
 
-
+function formatText(text){
+    let formattedInput = text.replace(/\D/g, '').slice(0, 16);
+    formattedInput = formattedInput.replace(/(\d{4})/g, '$1 ').trim();
+    return formattedInput;
+}
 const DebitAccounts = () => {
     const dispatch = useDispatch();
 
@@ -16,22 +23,10 @@ const DebitAccounts = () => {
 
     const getAccounts = async () => {
         try {
-            const response = await axios.get(url);
-            setAccount(response.data);
+            // const response = await axios.get(url);
+            // setAccount(response.data);
             
-            // var data = [
-            //     {
-            //         "idAccount": 1,
-            //         "idUser": 1,
-            //         "cardholderName": "Azul",
-            //         "issuingBank": "BBVA",
-            //         "cardNumber": "1234123412341234",
-            //         "allowsSections": true,
-            //         "currentBalance": 60.0,
-            //         "lastUpdateBalance": "2024-02-13T22:18:56.395+00:00"
-            //     }
-            // ]
-            // setAccount(data);
+            setAccount(dataOffline);
         } catch (error) {
             console.error('Error al obtener datos de la API', error);
         }
@@ -52,54 +47,24 @@ const DebitAccounts = () => {
     return (
         <div className='App'>
             <div className='container-fluid'>
-                <div className='row mt-3'>
-                    <div className='col-md-4 offset-md-4'>
-                        <div className='d-grid mx-auto'>
-                            <Link to={{pathname:"/debit_accounts/form"}}>
-                                <button className='btn btn-dark'
-                                onClick={() => clearState()}
-                                >
-                                    <i className='fa-solid fa-circle-plus'></i> Añadir
-                                </button>
-                            </Link>
-                        </div>
+                <div className='row'>
+                    <div className='col-12 justify-content-center' style={{marginTop: '20px'}}>
+                        <Link to={{pathname:"/debit_accounts/form"}}>
+                            <PiggyButton
+                                variant='btn-primary-color'
+                                initialValue='Agregar nueva tarjeta'
+                                icon="fa-solid fa-credit-card"
+                                width='80%'
+                                onClick={clearState}/>
+                        </Link>
                     </div>
                 </div>
-
-                <div className='row mt-3'>
-                    <div className='col-12 col-lg-8 offset-0 offset-lg-2'>
-                        <div className='table-responsive'>
-                            <table className='table table-bordered'>
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Banco</th>
-                                        <th>Tarjeta</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody className='table-group-divider'>
-                                    {accounts.map( (account, i) => (
-                                        <tr key={account.idAccount}>
-                                            <td>{(i+1)}</td>
-                                            <td>
-                                                <Link to={{pathname:"/debit_accounts/detail" }} 
-                                                      onClick={() => addAccountState(account)}>
-                                                    {account.issuingBank}
-                                                </Link>
-                                            </td>
-                                            <td>{account.cardholderName}</td>
-                                            <td>
-                                                <Link to={{pathname:"/debit_accounts/form" }} onClick={() => addAccountState(account)}>
-                                                    <i className='fa-solid fa-edit'/>
-                                                </Link>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
+                <div className="contenedor" style={{height: '700px', overflowY: 'auto', overflowX: 'hidden',  marginTop: '20px', paddingLeft:'10px',paddingRight:'8px'}}>
+                {accounts.map( (account, i) => (
+                    <div style={{padding:'10px 10px 0 0'}} key={account.idAccount}>
+                        <CardDesign issuingBank={account.issuingBank} cardholderName={account.cardholderName} cardNumber={account.cardNumber} onClick={() => addAccountState(account)}/>
                     </div>
+                ))}
                 </div>
             </div>
         </div>

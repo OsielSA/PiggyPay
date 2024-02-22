@@ -6,8 +6,7 @@ import { API_URLS } from '../apiConfig';
 import axios from 'axios';
 import ReturnBar from './ReturnBar';
 import CardNumberInput from './CardNumberInput';
-import ButtonPrimary from './ButtonPrimary/ButtonPrimary';
-import ButtonDanger from './ButtonDanger/ButtonDanger';
+import PiggyButton from './PiggyButton/PiggyButton';
 import ConfirmationModal from './ConfirmationModal';
 
 const FormDebitAccount = () => {
@@ -33,6 +32,7 @@ const FormDebitAccount = () => {
 
     const handleIssuingBankChange = (event) => { setIssuingBank(event.target.value); };
     const handleCardholderName = (event) => { setCardholderName(event.target.value); };
+    const handleCardNumberChange = (formattedInput) => { setCardNumber(formattedInput); };
     const handleCurrentBalance = (event) => { setCurrentBalance(event.target.value); };
     const handleSelectAllowsSections = (event) => {
         setSelectAllowsSections(event.target.value);
@@ -117,7 +117,7 @@ const FormDebitAccount = () => {
                         <Form.Control type="text" value={cardholderName} onChange={handleCardholderName}></Form.Control>
                     </Form.Group>
 
-                    <CardNumberInput initialValue={cardNumber} />
+                    <CardNumberInput initialValue={cardNumber} onChange={handleCardNumberChange}/>
 
                     <Form.Group controlId="formCurrentBalance" className='mb-3'>
                         <Form.Label className="fw-bold">Saldo actual</Form.Label>
@@ -138,17 +138,17 @@ const FormDebitAccount = () => {
                     {showDelete && (
                         <div className="row" style={{ marginTop: '30px' }}>
                             <div className='col-6'>
-                                <ButtonDanger onClick={handleOpenModal}></ButtonDanger>
+                                <PiggyButton variant='btn-danger-color' onClick={handleOpenModal} initialValue='Eliminar' icon='fa-solid fa-trash-can'/>
                             </div>
                             <div className='col-6'>
-                                <ButtonPrimary onClick={validar} initialValue='Guardar' />
+                                <PiggyButton variant='btn-primary-color' onClick={validar} initialValue='Guardar' icon='fa-solid fa-floppy-disk' />
                             </div>
                         </div>
                     )}
                     {!showDelete && (
                         <div className="row" style={{ marginTop: '30px' }}>
                             <div className='col-12'>
-                            <ButtonPrimary onClick={validar} initialValue='Guardar' /></div>
+                            <PiggyButton variant='btn-primary-color' onClick={validar} initialValue='Guardar' icon='fa-solid fa-floppy-disk'/></div>
                         </div>
                     )}
 

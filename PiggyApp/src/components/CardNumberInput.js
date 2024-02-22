@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form } from 'react-bootstrap';
 
-const CardNumberInput = ({ initialValue }) => {
+const CardNumberInput = ({ initialValue, onChange }) => {
   const [cardNumber, setCardNumber] = useState('');
 
   useEffect(() => {
@@ -17,6 +17,10 @@ const CardNumberInput = ({ initialValue }) => {
     input = input.slice(0, 16);
     const formattedInput = input.replace(/(\d{4})/g, '$1 ').trim();
     setCardNumber(formattedInput);
+
+    if (onChange) {
+      onChange(formattedInput);
+    }
   };
 
   return (

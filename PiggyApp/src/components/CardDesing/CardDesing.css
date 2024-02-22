@@ -1,0 +1,80 @@
+.containerCard {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+    
+  }
+.cardBody {
+    margin: auto;
+    min-height: 100px;
+    min-width: 200px;
+    background: #B9B9E7;
+    border-radius: 15px;
+    box-shadow: 3px 3px 5px #0000004e;
+    /* #00000017 */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+  
+    transition: 0.5s;
+}
+.cardName{
+    font-size: 20px;
+    align-self: normal;
+    text-align: left;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+.logo-crypto {
+    padding-top: 15px;
+    padding-right: 30px;
+    fill: black;
+    font-size: 20px;
+}
+.chip {
+  height: 40px;
+  width: 40px;
+}
+
+
+.chip {
+    /* align-self: start; */
+    margin: 10px 0px 0px 30px;
+    background: url("https://cdn-icons-png.flaticon.com/512/607/607697.png") no-repeat center center / cover;
+    border-radius: 5px;
+}
+
+.container-numeros {
+    font-size: 18px;
+    margin-top: 30px;
+    text-align: center;
+}
+.numeros span {
+    margin: 0px 5px;
+}
+.detalhes-numeros {
+    font-size: 10px;
+    margin-left: 5px;
+}
+.validade {
+    margin-top: 10px;
+    font-size: 20px;
+    display: flex;
+}
+  
+  /* "valid thru" */
+  .detalhes-validade div {
+    font-size: 10px;
+    margin-right: 10px;
+    text-transform: uppercase;
+}
+
+.container-detalle{
+    padding-top: 15px;
+    padding-left: 15px;
+    text-align: start;
+    font-size: 18px;
+    margin-bottom: 10px;
+}

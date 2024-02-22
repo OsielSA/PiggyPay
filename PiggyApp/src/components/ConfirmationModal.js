@@ -1,7 +1,7 @@
 // ConfirmationModal.js
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import ButtonDanger from './ButtonDanger/ButtonDanger';
+import PiggyButton from './PiggyButton/PiggyButton';
 
 function ConfirmationModal({ isOpen, onClose, onConfirm }) {
     const secondaryStyle = {
@@ -22,8 +22,16 @@ function ConfirmationModal({ isOpen, onClose, onConfirm }) {
                 <p>¿Estás seguro de eliminar está tarjeta?</p>
             </Modal.Body>
             <Modal.Footer>
-                <button onClick={onClose} style={secondaryStyle}>Cancelar</button>
-                <ButtonDanger onClick={onConfirm} useIcon={false}></ButtonDanger>
+                <div className='row'>
+                        <PiggyButton variant='btn-secondary-color' initialValue='Cancelar' onClick={onClose} style={{width:'45%'}}/>
+                        <PiggyButton variant='btn-danger-color' initialValue='Eliminar' onClick={onConfirm} style={{width:'45%', marginLeft:'10px'}}/>
+                 
+                    {/* <div className='col-6'>
+                        <PiggyButton variant='btn-secondary-color' initialValue='Cancelar' onClick={onClose} />
+                    </div>
+                    <div className='col-6'>
+                    </div> */}
+                </div>
             </Modal.Footer>
         </Modal>
     );

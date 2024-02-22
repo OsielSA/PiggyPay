@@ -1,0 +1,27 @@
+.btn-secondary-color {
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #939393;
+    border-color: #939393;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+  }
+.btn-secondary-color:hover {
+    background-color: #939393;
+    border-color: #939393;
+}
+
+.btn-secondary-color:focus {
+    box-shadow: 0 0 0 0.2rem #939393;
+}
+
+.btn-secondary-color:active {
+    background-color: #939393;
+    border-color: #939393;
+}
+
+.btn-secondary-color.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
