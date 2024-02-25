@@ -1,7 +1,7 @@
 // ConfirmationModal.js
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import PiggyButton from './PiggyButton/PiggyButton';
+import ThemedButton from './ThemedButton/ThemedButton';
 
 function ConfirmationModal({ isOpen, onClose, onConfirm }) {
     const secondaryStyle = {
@@ -23,11 +23,11 @@ function ConfirmationModal({ isOpen, onClose, onConfirm }) {
             </Modal.Body>
             <Modal.Footer>
                 <div className='row'>
-                        <PiggyButton variant='btn-secondary-color' initialValue='Cancelar' onClick={onClose} style={{width:'45%'}}/>
-                        <PiggyButton variant='btn-danger-color' initialValue='Eliminar' onClick={onConfirm} style={{width:'45%', marginLeft:'10px'}}/>
+                        <ThemedButton variant='btn-secondary-color' initialValue='Cancelar' onClick={onClose} style={{width:'45%'}}/>
+                        <ThemedButton variant='btn-danger-color' initialValue='Eliminar' onClick={onConfirm} style={{width:'45%', marginLeft:'10px'}}/>
                  
                     {/* <div className='col-6'>
-                        <PiggyButton variant='btn-secondary-color' initialValue='Cancelar' onClick={onClose} />
+                        <ThemedButton variant='btn-secondary-color' initialValue='Cancelar' onClick={onClose} />
                     </div>
                     <div className='col-6'>
                     </div> */}

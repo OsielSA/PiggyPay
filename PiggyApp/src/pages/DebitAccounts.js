@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Card, Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { addAccount, removeAccount } from '../redux/DebitAccountSlice';
-import PiggyButton from '../components/PiggyButton/PiggyButton';
+import ThemedButton from '../components/ThemedButton/ThemedButton';
 import CardDesign from '../components/CardDesing/CardDesign';
 import { dataOffline } from '../OfflineData.js'
 
@@ -23,10 +23,10 @@ const DebitAccounts = () => {
 
     const getAccounts = async () => {
         try {
-            // const response = await axios.get(url);
-            // setAccount(response.data);
+            const response = await axios.get(url);
+            setAccount(response.data);
             
-            setAccount(dataOffline);
+            // setAccount(dataOffline);
         } catch (error) {
             console.error('Error al obtener datos de la API', error);
         }
@@ -50,7 +50,7 @@ const DebitAccounts = () => {
                 <div className='row'>
                     <div className='col-12 justify-content-center' style={{marginTop: '20px'}}>
                         <Link to={{pathname:"/debit_accounts/form"}}>
-                            <PiggyButton
+                            <ThemedButton
                                 variant='btn-primary-color'
                                 initialValue='Agregar nueva tarjeta'
                                 icon="fa-solid fa-credit-card"

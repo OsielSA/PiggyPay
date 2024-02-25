@@ -3,7 +3,7 @@ import './ButtonPrimary.css';
 import './ButtonDanger.css';
 import './ButtonSecondary.css';
 
-const PiggyButton = ({variant, initialValue, onClick='', icon, style}) => {
+const ThemedButton = ({variant, initialValue, onClick='', icon, style}) => {
   const secondStyle = style;
   return (
     <button className={variant} onClick={onClick} style={style}>
@@ -12,4 +12,4 @@ const PiggyButton = ({variant, initialValue, onClick='', icon, style}) => {
   );
 };
 
-export default PiggyButton;
+export default ThemedButton;

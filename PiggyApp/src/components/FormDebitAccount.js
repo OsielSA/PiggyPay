@@ -6,7 +6,7 @@ import { API_URLS } from '../apiConfig';
 import axios from 'axios';
 import ReturnBar from './ReturnBar';
 import CardNumberInput from './CardNumberInput';
-import PiggyButton from './PiggyButton/PiggyButton';
+import ThemedButton from './ThemedButton/ThemedButton';
 import ConfirmationModal from './ConfirmationModal';
 
 const FormDebitAccount = () => {
@@ -138,17 +138,17 @@ const FormDebitAccount = () => {
                     {showDelete && (
                         <div className="row" style={{ marginTop: '30px' }}>
                             <div className='col-6'>
-                                <PiggyButton variant='btn-danger-color' onClick={handleOpenModal} initialValue='Eliminar' icon='fa-solid fa-trash-can'/>
+                                <ThemedButton variant='btn-danger-color' onClick={handleOpenModal} initialValue='Eliminar' icon='fa-solid fa-trash-can'/>
                             </div>
                             <div className='col-6'>
-                                <PiggyButton variant='btn-primary-color' onClick={validar} initialValue='Guardar' icon='fa-solid fa-floppy-disk' />
+                                <ThemedButton variant='btn-primary-color' onClick={validar} initialValue='Guardar' icon='fa-solid fa-floppy-disk' />
                             </div>
                         </div>
                     )}
                     {!showDelete && (
                         <div className="row" style={{ marginTop: '30px' }}>
                             <div className='col-12'>
-                            <PiggyButton variant='btn-primary-color' onClick={validar} initialValue='Guardar' icon='fa-solid fa-floppy-disk'/></div>
+                            <ThemedButton variant='btn-primary-color' onClick={validar} initialValue='Guardar' icon='fa-solid fa-floppy-disk'/></div>
                         </div>
                     )}
 
