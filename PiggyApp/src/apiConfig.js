@@ -5,7 +5,8 @@ const API_URLS = {
     DEBIT_ACOUNTS: `${BASE_URL}/debit_account/byUser/1`,
     SAVE_DEBIT_ACOUNT: `${BASE_URL}/debit_account/save`,
     UPDATE_DEBIT_ACOUNT: `${BASE_URL}/debit_account/update/{idAccount}`,
-    DELETE_DEBIT_ACOUNT: `${BASE_URL}/debit_account/delete/{idAccount}`
+    DELETE_DEBIT_ACOUNT: `${BASE_URL}/debit_account/delete/{idAccount}`,
+    GET_MOVEMENTS: `${BASE_URL}/debit_account/movement/{idAccount}`,
 };
 
 export { API_URLS };

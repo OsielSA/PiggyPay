@@ -5,7 +5,7 @@ const DebitSections = () => {
     const account = useSelector((state) => state.account)
 
     useEffect ( () => {
-        console.log("sections: " + account.allowsSections);
+        // console.log("sections: " + account.allowsSections);
     }, []);
     return (
         <div className='container'>

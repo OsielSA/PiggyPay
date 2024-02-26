@@ -1,6 +1,7 @@
 package com.PiggyApi.persistence.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
 
@@ -25,12 +26,8 @@ public class DebitMovement {
     private boolean typeMovement;
 
     @Column(name = "date_movement")
+    @UpdateTimestamp
     private Timestamp dateMovement;
-
-//    @OneToMany
-//    @JoinColumn(name = "id_account", insertable = false, updatable = false)
-//    private DebitAccount debitAccount;
-
 
     public int getIdMovement() {
         return idMovement;

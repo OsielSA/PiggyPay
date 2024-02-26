@@ -2,9 +2,11 @@ package com.PiggyApi.domain.service;
 
 import com.PiggyApi.domain.repository.DebitAccountRepository;
 import com.PiggyApi.persistence.entity.DebitAccount;
+import com.PiggyApi.persistence.entity.DebitMovement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,5 +36,18 @@ public class DebitAccountService {
         if(account.isEmpty())
             return true;
         return false;
+    }
+    public void updateCurrentBalance(DebitMovement debitMovement){
+        List<DebitAccount> debitAccounts = debitAccountRepository.getByIdAccount(debitMovement.getIdAccount());
+        Iterator iter = debitAccounts.iterator();
+        DebitAccount debitAccount = (DebitAccount) iter.next();
+        float currentBalance = debitAccount.getCurrentBalance();
+        if (!debitMovement.isTypeMovement())
+            debitMovement.setAmount(debitMovement.getAmount() * -1);
+
+        currentBalance += debitMovement.getAmount();
+        debitAccount.setCurrentBalance(currentBalance);
+
+        debitAccountRepository.saveAccount(debitAccount);
     }
 }
