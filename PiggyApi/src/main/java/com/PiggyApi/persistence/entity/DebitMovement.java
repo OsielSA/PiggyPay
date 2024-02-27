@@ -3,6 +3,7 @@ package com.PiggyApi.persistence.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
@@ -26,8 +27,11 @@ public class DebitMovement {
     private boolean typeMovement;
 
     @Column(name = "date_movement")
+    private Date dateMovement;
+
+    @Column(name = "recorded_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @UpdateTimestamp
-    private Timestamp dateMovement;
+    private Timestamp recordedAt;
 
     public int getIdMovement() {
         return idMovement;
@@ -69,11 +73,19 @@ public class DebitMovement {
         this.typeMovement = typeMovement;
     }
 
-    public Timestamp getDateMovement() {
+    public Date getDateMovement() {
         return dateMovement;
     }
 
-    public void setDateMovement(Timestamp dateMovement) {
+    public void setDateMovement(Date dateMovement) {
         this.dateMovement = dateMovement;
+    }
+
+    public Timestamp getRecordedAt() {
+        return recordedAt;
+    }
+
+    public void setRecordedAt(Timestamp recordedAt) {
+        this.recordedAt = recordedAt;
     }
 }

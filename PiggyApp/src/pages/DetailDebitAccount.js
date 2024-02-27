@@ -26,7 +26,7 @@ const DetailDebitAccount = () => {
         <div>
             <ReturnBar title='Regresar' pathname="/debit_accounts" />
             <div style={{marginTop: '10px'}}>
-                <ThemedToggleButton radios={radios} onToggleEvent={handleToggleEvent}/>
+                <ThemedToggleButton radios={radios} radioSelected={selectedOption} onToggleEvent={handleToggleEvent}/>
             </div>
 
             {selectedOption === '1' && (

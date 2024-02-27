@@ -2,9 +2,9 @@ import React , { useEffect, useState } from 'react';
 import {ButtonGroup, ToggleButton } from 'react-bootstrap';
 import './PrimaryToggleButton.css'
 
-const ThemedToggleButton = ({radios, onToggleEvent }) => {
+const ThemedToggleButton = ({radios, radioSelected, onToggleEvent, style }) => {
     const radiosP = radios;
-    const [radioValue, setRadioValue] = React.useState('1');
+    const [radioValue, setRadioValue] = React.useState(radioSelected);
 
     const handleRadioChange = (value) => {
         setRadioValue(value);
@@ -19,6 +19,7 @@ const ThemedToggleButton = ({radios, onToggleEvent }) => {
                     key={idx}
                     className={`custom-toggle ${radioValue === radio.value ? 'checked' : ''}`}
                     onClick={() => handleRadioChange(radio.value)}
+                    style={style}
                 >
                 {radio.name}
               </button>

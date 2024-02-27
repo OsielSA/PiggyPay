@@ -18,13 +18,15 @@ CREATE TABLE Debit_Accounts(
 	last_update_balance TIMESTAMP
 )
 
+DROP TABLE Debit_Movements;
 CREATE TABLE Debit_Movements(
 	id_movement SERIAL PRIMARY KEY,
 	id_account INT NOT NULL,
 	amount NUMERIC(10,2) NOT NULL,
 	description_movement VARCHAR(200) NULL,
-	type_movement BIT NOT NULL,
-	date_movement TIMESTAMP
+	type_movement BOOL NOT NULL,
+	date_movement DATE NOT NULL,
+    recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 CREATE TABLE Account_Sections (
 	id_section SERIAL PRIMARY KEY,

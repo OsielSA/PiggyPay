@@ -5,7 +5,9 @@ import com.PiggyApi.persistence.entity.DebitMovement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DebitMovementService {
@@ -15,7 +17,12 @@ public class DebitMovementService {
     public DebitAccountService debitAccountService;
 
     public List<DebitMovement> getAllMovementsByIdAccount(int idAccount){
-        return debitMovementRepository.getAllByIdAccount(idAccount);
+        List<DebitMovement> movements = debitMovementRepository.getAllByIdAccount(idAccount);
+        movements = movements.stream()
+                .sorted(Comparator.comparing(DebitMovement::getDateMovement).reversed())
+                .collect(Collectors.toList());
+
+        return movements;
     }
 
     public DebitMovement saveMovement(DebitMovement debitMovement){
