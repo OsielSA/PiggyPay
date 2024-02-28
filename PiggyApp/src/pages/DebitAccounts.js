@@ -24,7 +24,9 @@ const DebitAccounts = () => {
     const getAccounts = async () => {
         try {
             const response = await axios.get(url);
-            setAccount(response.data);
+            const sortedAccounts = response.data.sort((a, b) => a.issuingBank.localeCompare(b.issuingBank));
+            setAccount(sortedAccounts);
+            // setAccount(response.data);
             
             // setAccount(dataOffline);
         } catch (error) {

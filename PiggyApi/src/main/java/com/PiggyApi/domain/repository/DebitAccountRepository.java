@@ -6,9 +6,11 @@ import com.PiggyApi.persistence.entity.DebitMovement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Repository
 public class DebitAccountRepository {
@@ -21,7 +23,9 @@ public class DebitAccountRepository {
     }
 
     public List<DebitAccount> getByIdAccount(int idAccount){
-        return debitAccountCrudRepository.findByIdAccount(idAccount);
+        List<DebitAccount> debitAccounts = debitAccountCrudRepository.findByIdAccount(idAccount);
+        debitAccounts = debitAccounts.stream().sorted(Comparator.comparing(DebitAccount::getIssuingBank).reversed()).collect(Collectors.toList());
+        return debitAccounts;
     }
     public List<DebitAccount> getByIdUser(int idUser){
         return (List<DebitAccount>) debitAccountCrudRepository.findByIdUser(idUser);

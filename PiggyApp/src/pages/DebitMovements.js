@@ -8,8 +8,9 @@ import Form from "react-bootstrap/Form";
 import ThemedButton from '../components/ThemedButton/ThemedButton';
 import ThemedToggleButton from '../components/ThemedToggleButton/ThemedToggleButton';
 
-function formatDate (date){
-    return format(new Date(date), 'dd LLL ', { locale: esLocale });
+function formatDate (dateMovement){
+    var date = new Date(Date.parse('2024-02-29T00:00:00Z'));
+    return String(date);//format(date, 'dd LLL ', { locale: esLocale });
 }
 const DebitMovements = () => {
     const account = useSelector((state) => state.account)
@@ -58,7 +59,7 @@ const DebitMovements = () => {
             amount: amount,
             descriptionMovement: description,
             typeMovement: selectedOption,
-            dateMovement: date
+            dateMovement: new Date(date).toISOString().split('T')[0]
         }
         saveMovement('POST', parameters)
     }
@@ -68,10 +69,10 @@ const DebitMovements = () => {
     const handleDateChange = (event) => { setDate(event.target.value); }
 
     const saveMovement = async(method, parameters) => {
+        console.log(parameters);
         await axios({method: method, url:API_URLS.SAVE_MOVEMENT, data:parameters}).then(function(response){
             var type = response.data[0];
             var msj = response.data[1];
-            console.log(response.data);
         });
         alert("Guardado exitosamente" );
         setOpenAddMovement(false);
@@ -132,7 +133,7 @@ const DebitMovements = () => {
                 <div className='row' key={movement.idMovement} style={{paddingLeft:'10px', paddingRight:'10px',}}>
                     <div className='col-9'>
                         <div><label>{movement.descriptionMovement}</label></div>
-                        <div><label>{formatDate(movement.dateMovement)}</label></div>
+                        <div><label>{formatDate(movement.dateMovement)}-{movement.dateMovement}</label></div>
                     </div>
                     <div className='col-3' style={{textAlign: 'right'}}>
                         <label>${movement.amount}</label>

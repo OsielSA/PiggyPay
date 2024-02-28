@@ -1,10 +1,12 @@
 package com.PiggyApi.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "debit_movements")
@@ -26,8 +28,9 @@ public class DebitMovement {
     @Column(name = "type_movement")
     private boolean typeMovement;
 
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
     @Column(name = "date_movement")
-    private Date dateMovement;
+    private LocalDate dateMovement;
 
     @Column(name = "recorded_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @UpdateTimestamp
@@ -73,11 +76,11 @@ public class DebitMovement {
         this.typeMovement = typeMovement;
     }
 
-    public Date getDateMovement() {
+    public LocalDate getDateMovement() {
         return dateMovement;
     }
 
-    public void setDateMovement(Date dateMovement) {
+    public void setDateMovement(LocalDate dateMovement) {
         this.dateMovement = dateMovement;
     }
 
