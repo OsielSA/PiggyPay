@@ -19,7 +19,8 @@ public class DebitMovementService {
     public List<DebitMovement> getAllMovementsByIdAccount(int idAccount){
         List<DebitMovement> movements = debitMovementRepository.getAllByIdAccount(idAccount);
         movements = movements.stream()
-                .sorted(Comparator.comparing(DebitMovement::getDateMovement).reversed())
+                .sorted(Comparator.comparing(DebitMovement::getDateMovement).reversed()
+                        .thenComparing(Comparator.comparing(DebitMovement::getIdMovement).reversed()))
                 .collect(Collectors.toList());
 
         return movements;

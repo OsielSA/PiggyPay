@@ -25,6 +25,9 @@ const DetailDebitAccount = () => {
     return (
         <div>
             <ReturnBar title='Regresar' pathname="/debit_accounts" />
+            <div>
+                <label>Saldo Actual: <span>{account.currentBalance}</span></label>
+            </div>
             <div style={{marginTop: '10px'}}>
                 <ThemedToggleButton radios={radios} radioSelected={selectedOption} onToggleEvent={handleToggleEvent}/>
             </div>
