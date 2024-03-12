@@ -75,7 +75,7 @@ const FormDebitAccount = () => {
     const saveAccount = async(method, parameters) => {
         console.log(method)
         console.log(parameters)
-        await axios({method: method, url:API_URLS.SAVE_DEBIT_ACOUNT, data:parameters}).then(function(response){
+        await axios({method: method, url:API_URLS.SAVE_DEBIT_ACCOUNT, data:parameters}).then(function(response){
             var type = response.data[0];
             var msj = response.data[1];
             console.log(response.data);
@@ -126,7 +126,7 @@ const FormDebitAccount = () => {
                     <Form.Group controlId="formAllowsSections" className='mb-3'>
                         <Form.Label className="fw-bold">Permite apartados</Form.Label>
                         <Form.Select value={selectAllowsSections} onChange={handleSelectAllowsSections}>
-                            <option>Seleccione una opcion</option>
+                            <option>Seleccione una opción</option>
                             <option value="1">Si</option>
                             <option value="2">No</option>
                         </Form.Select>

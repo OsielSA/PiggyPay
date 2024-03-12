@@ -1,18 +1,22 @@
 import React , { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { API_URLS } from '../apiConfig';
+import { addAccount, removeAccount } from '../redux/DebitAccountSlice';
 import { format } from 'date-fns';
 import esLocale from 'date-fns/locale/es';
 import axios from 'axios';
 import Form from "react-bootstrap/Form";
 import ThemedButton from '../components/ThemedButton/ThemedButton';
 import ThemedToggleButton from '../components/ThemedToggleButton/ThemedToggleButton';
+import { dataOffline } from '../OfflineData_Movements.js'
 
 function formatDate (dateString){
     const date = new Date(`${dateString}T00:00:00`);
     return format(date, 'dd LLL ', { locale: esLocale });
 }
 const DebitMovements = () => {
+    const dispatch = useDispatch();
     const account = useSelector((state) => state.account)
     const [movements, setMovements] = useState([]);
 
@@ -35,6 +39,9 @@ const DebitMovements = () => {
             var url_getMovements = API_URLS.GET_MOVEMENTS.replace('{idAccount}', account.idAccount)
             const response = await axios.get(url_getMovements);
             setMovements(response.data);
+
+            //DataOffline
+            // setMovements(dataOffline);
         } catch (error) {
             console.error('Error al obtener datos de la API', error);
         }
@@ -69,15 +76,24 @@ const DebitMovements = () => {
     const handleDateChange = (event) => { setDate(event.target.value); }
 
     const saveMovement = async(method, parameters) => {
-        console.log(parameters);
         await axios({method: method, url:API_URLS.SAVE_MOVEMENT, data:parameters}).then(function(response){
             var type = response.data[0];
             var msj = response.data[1];
         });
         alert("Guardado exitosamente" );
         setOpenAddMovement(false);
+        getAccount();
         getMovements();
     }
+    const getAccount = async() => {
+        var url_get = API_URLS.GET_DEBIT_ACCOUNT.replace('{idAccount}', account.idAccount)
+        const response = await axios.get(url_get);
+        addAccountState(response.data);
+    }
+    const addAccountState = (account) => {
+        dispatch(addAccount(account))
+    }
+
     return (
         <div>
             {!openAddMovemnt &&
@@ -128,6 +144,7 @@ const DebitMovements = () => {
                 </div>
             </div>
             }
+            <div className="contenedor" style={{height: '700px', overflowY: 'auto', overflowX: 'hidden',  marginTop: '10px'}}>
             <hr />
             {movements.map( (movement, i) => (
                 <div className='row' key={movement.idMovement} style={{paddingLeft:'10px', paddingRight:'10px',}}>
@@ -143,6 +160,7 @@ const DebitMovements = () => {
                     }/>
                 </div>               
             ))}
+            </div>
         </div>
 
     );

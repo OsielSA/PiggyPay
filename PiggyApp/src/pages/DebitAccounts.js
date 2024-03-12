@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 import { API_URLS } from '../apiConfig';
 import axios from 'axios';
@@ -7,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { addAccount, removeAccount } from '../redux/DebitAccountSlice';
 import ThemedButton from '../components/ThemedButton/ThemedButton';
 import CardDesign from '../components/CardDesing/CardDesign';
-import { dataOffline } from '../OfflineData.js'
+import { dataOffline } from '../OfflineData_DebitAccounts.js'
 
 function formatText(text){
     let formattedInput = text.replace(/\D/g, '').slice(0, 16);
@@ -26,7 +27,6 @@ const DebitAccounts = () => {
             const response = await axios.get(url);
             const sortedAccounts = response.data.sort((a, b) => a.issuingBank.localeCompare(b.issuingBank));
             setAccount(sortedAccounts);
-            // setAccount(response.data);
             
             // setAccount(dataOffline);
         } catch (error) {
